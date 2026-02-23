@@ -1,6 +1,6 @@
 # TrailCurrent Waveshare ESP32-S3 Remote
 
-Touchscreen remote control for the TrailCurrent modular vehicle system, built on the Waveshare ESP32-S3 4.3" touch display with LVGL GUI and ESP-NOW wireless communication.
+Touchscreen remote control for the [TrailCurrent](https://trailcurrent.com) modular vehicle system, built on the Waveshare ESP32-S3 4.3" touch display with LVGL GUI and ESP-NOW wireless communication.
 
 ## Hardware Overview
 
