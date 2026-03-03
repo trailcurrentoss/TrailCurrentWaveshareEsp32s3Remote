@@ -12,9 +12,14 @@ extern void action_settings_selection_change(lv_event_t * e);
 extern void action_change_theme(lv_event_t * e);
 extern void action_timeout_changed(lv_event_t * e);
 extern void action_keep_on_while_driving_changed(lv_event_t * e);
-extern void action_change_gateway_mac_address(lv_event_t * e);
-extern void action_commit_mac_address_changes(lv_event_t * e);
 extern void action_timezone_change(lv_event_t * e);
+extern void action_wifi_scan(lv_event_t * e);
+extern void action_wifi_connect(lv_event_t * e);
+extern void action_save_server_url(lv_event_t * e);
+extern void action_save_api_key(lv_event_t * e);
+extern void action_save_server_config(lv_event_t * e);
+extern void action_toggle_light(lv_event_t * e);
+extern void action_navigate_to_wifi_setup(lv_event_t * e);
 
 
 #ifdef __cplusplus

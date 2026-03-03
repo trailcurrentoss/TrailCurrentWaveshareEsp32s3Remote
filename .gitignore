@@ -1,6 +1,15 @@
 .pio
 .vscode/
-src/secrets.h
+
 **/.DS_Store
 **/*.zip
 **/*.FCBak
+
+**/CLAUDE.md
+**/claude.md
+**/Claude.md
+**/CLAUDE.md
+**/claude.md
+**/.claude
+**/.CLAUDE
+**/.Claude

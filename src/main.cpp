@@ -4,9 +4,17 @@
 #include <ESP_Panel_Library.h>
 #include <ESP_IOExpander_Library.h>
 #include "ui/ui.h"
-#include "espNowHelper.h"
+#include "ui/vars.h"
+#include "wifiHelper.h"
+#include "mqttClient.h"
+#include "sdConfig.h"
 #include <Preferences.h>
 Preferences preferences; // NVS storage for user settings
+extern void setup_wifi_keyboard();
+extern void setup_server_config_keyboard();
+extern void prepare_server_config_screen();
+extern void setup_light_buttons();
+static ESP_IOExpander *expander = NULL;
 unsigned long int previousuStatusCheckMillis = 0;
 long uStatusCheckInterval = 33;
 
@@ -21,13 +29,6 @@ long uStatusCheckInterval = 33;
 #define I2C_MASTER_NUM 0
 #define I2C_MASTER_SDA_IO 8
 #define I2C_MASTER_SCL_IO 9
-
-/**
-/* To use the built-in examples and demos of LVGL uncomment the includes below respectively.
- * You also need to copy `lvgl/examples` to `lvgl/src/examples`. Similarly for the demos `lvgl/demos` to `lvgl/src/demos`.
- */
-// #include <demos/lv_demos.h>
-// #include <examples/lv_examples.h>
 
 /* LVGL porting configurations */
 #define LVGL_TICK_PERIOD_MS (2)
@@ -81,8 +82,6 @@ void lvgl_port_tp_read(lv_indev_drv_t *indev, lv_indev_data_t *data)
         /*Set the coordinates*/
         data->point.x = point.x;
         data->point.y = point.y;
-
-        // Serial0.printf("Touch point: x %d, y %d\n", point.x, point.y);
     }
 }
 #endif
@@ -124,7 +123,8 @@ void lvgl_port_task(void *arg)
 
 void setup()
 {
-    Serial0.begin(115200); /* prepare for possible serial debug */
+    Serial.begin(115200);  /* USB CDC debug output */
+    Serial0.begin(115200); /* UART0 debug output */
 
     String LVGL_Arduino = "Hello LVGL! ";
     LVGL_Arduino += String('V') + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
@@ -140,9 +140,9 @@ void setup()
     /* Initialize LVGL buffers */
     static lv_disp_draw_buf_t draw_buf;
     /* Using double buffers is more faster than single buffer */
-    /* Using internal SRAM is more fast than PSRAM (Note: Memory allocated using `malloc` may be located in PSRAM.) */
-    uint8_t *buf = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_INTERNAL);
-    uint8_t *buf2 = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_INTERNAL);
+    /* Use PSRAM for display buffers to leave internal SRAM available for WiFi */
+    uint8_t *buf = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_SPIRAM);
+    uint8_t *buf2 = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_SPIRAM);
     assert(buf);
     lv_disp_draw_buf_init(&draw_buf, buf, buf2, LVGL_BUF_SIZE);
 
@@ -172,22 +172,14 @@ void setup()
     panel->getLcd()->setCallback(notify_lvgl_flush_ready, &disp_drv);
 #endif
 
-    /**
-     * These development boards require the use of an IO expander to configure the screen,
-     * so it needs to be initialized in advance and registered with the panel for use.
-     *
-     */
     debugln("Initialize IO expander");
     /* Initialize IO expander */
-    // ESP_IOExpander *expander = new ESP_IOExpander_CH422G(I2C_MASTER_NUM, ESP_IO_EXPANDER_I2C_CH422G_ADDRESS_000, I2C_MASTER_SCL_IO, I2C_MASTER_SDA_IO);
-    ESP_IOExpander *expander = new ESP_IOExpander_CH422G(I2C_MASTER_NUM, ESP_IO_EXPANDER_I2C_CH422G_ADDRESS_000);
+    expander = new ESP_IOExpander_CH422G(I2C_MASTER_NUM, ESP_IO_EXPANDER_I2C_CH422G_ADDRESS_000);
     expander->init();
     expander->begin();
     expander->multiPinMode(TP_RST | LCD_BL | LCD_RST | SD_CS | USB_SEL, OUTPUT);
     expander->multiDigitalWrite(TP_RST | LCD_BL | LCD_RST | SD_CS, HIGH);
 
-    // Turn off backlight
-    // expander->digitalWrite(USB_SEL, LOW);
     expander->digitalWrite(USB_SEL, LOW);
     /* Add into panel */
     panel->addIOExpander(expander);
@@ -203,41 +195,41 @@ void setup()
     lvgl_port_lock(-1);
 
     ui_init();
+    setup_light_buttons();
 
     /* Release the mutex */
     lvgl_port_unlock();
-    espNowHelper::initialize();
-    debugln("Setup done");
-    // Start by reading saved preferences in from NVM
+
+    // Initialize NVS preferences
     preferences.begin("user_settings", false);
+
+    // Try reading config from SD card (writes values to NVS if found)
+    sdConfig::readConfigFromSD(expander, preferences);
+
+    // Initialize WiFi (picks up any fresh values from SD card)
+    wifiHelper::initialize(preferences);
+
+    // Load MQTT settings from NVS (picks up any fresh values from SD card)
+    mqttClient::loadSettings(preferences);
+
+    // Load saved UI settings from NVS
     int savedTheme = preferences.getInt("selectedTheme", 0);
     int screenTimeout = preferences.getInt("screenTimeout", 0);
     bool keepScreenOnWhileDriving = preferences.getBool("onWhileDriving", true);
-    int gatewayMac1 = preferences.getInt("gatewayMac1", 00);
-    int gatewayMac2 = preferences.getInt("gatewayMac2", 00);
-    int gatewayMac3 = preferences.getInt("gatewayMac3", 00);
-    int gatewayMac4 = preferences.getInt("gatewayMac4", 00);
-    int gatewayMac5 = preferences.getInt("gatewayMac5", 00);
-    int gatewayMac6 = preferences.getInt("gatewayMac6", 00);
     String savedTimezone = preferences.getString("timeZone", "ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00");
-    char macString[18];
-    sprintf(macString, "%02X:%02X:%02X:%02X:%02X:%02X",
-            gatewayMac1, gatewayMac2, gatewayMac3, gatewayMac4, gatewayMac5, gatewayMac6);
-    lv_label_set_text(objects.label_gateway_mac_address, macString);
     set_var_selected_theme(savedTheme);
     set_var_screen_timeout_value(screenTimeout);
     set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
-    const char *timezoneItems[41] = {"ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "CST6CDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7MDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "HST11HDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "PST8PDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "EST5EDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7"};
+    const char *timezoneItemsList[7] = {"ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "CST6CDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7MDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "HST11HDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "PST8PDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "EST5EDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7"};
     int selectedTimezone = 0;
     savedTimezone.trim();
     const char *savedTimezoneChar = savedTimezone.c_str();
     for (int i = 0; i < 7; i++)
     {
-        if (strcmp(timezoneItems[i],savedTimezoneChar) == 0)
+        if (strcmp(timezoneItemsList[i], savedTimezoneChar) == 0)
         {
             debugln("Found selected timezone");
-            debug("The selected timezone is - ");
-            debugln(timezoneItems[i]);
+            debugf("[Settings] Timezone: %s\n", timezoneItemsList[i]);
             selectedTimezone = i;
         }
     }
@@ -245,10 +237,45 @@ void setup()
     set_var_current_time_zone_string(savedTimezoneChar);
     // Set the version number label
     lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
+
+    // Determine which screen to show on boot
+    if (!wifiHelper::hasCredentials() && !mqttClient::hasConfig())
+    {
+        // No config at all - show "insert SD card" message
+        debugln("[Boot] No configuration found, showing SD card prompt");
+        lv_scr_load(objects.wifi_setup);
+        lv_obj_clear_flag(objects.wifi_setup, LV_OBJ_FLAG_SCROLLABLE);
+        // Hide all interactive widgets - just show a message
+        lv_obj_add_flag(objects.roller_wifi_networks, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.textarea_wifi_ssid, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.label_wifi_ssid, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.textarea_wifi_password, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.label_wifi_password, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.btn_wifi_connect, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.btn_wifi_skip, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(objects.btn_wifi_scan, LV_OBJ_FLAG_HIDDEN);
+        lv_label_set_text(objects.label_wifi_setup_title, "Configuration Required");
+        set_var_connection_status_text("Insert SD card with config.env and ca.crt then restart");
+    }
+    else if (wifiHelper::isConnected() && mqttClient::hasConfig())
+    {
+        // Everything configured and WiFi connected - connect MQTT
+        debugln("[Boot] Fully configured, connecting MQTT");
+        mqttClient::connect();
+    }
+    else
+    {
+        debugln("[Boot] Partial config - waiting for WiFi or reconnect");
+    }
+
+    debugln("Setup done");
 }
 
 void loop()
 {
+    // Process queued MQTT messages (with LVGL mutex for thread safety)
+    mqttClient::loop();
+
     // If settings have changed we need to persist them
     if (get_var_user_settings_changed())
     {
@@ -258,18 +285,30 @@ void loop()
         preferences.putInt("selectedTheme", selectedTheme);
         preferences.putInt("screenTimeout", screenTimeout);
         preferences.putBool("onWhileDriving", keepScreenOnWhileDriving);
-        preferences.putInt("gatewayMac1", get_var_gateway_mac_address_byte1());
-        preferences.putInt("gatewayMac2", get_var_gateway_mac_address_byte2());
-        preferences.putInt("gatewayMac3", get_var_gateway_mac_address_byte3());
-        preferences.putInt("gatewayMac4", get_var_gateway_mac_address_byte4());
-        preferences.putInt("gatewayMac5", get_var_gateway_mac_address_byte5());
-        preferences.putInt("gatewayMac6", get_var_gateway_mac_address_byte6());
         preferences.putString("timeZone", get_var_current_time_zone_string());
         set_var_user_settings_changed(false);
     }
+
+    // Check WiFi reconnection
+    wifiHelper::checkReconnect();
+
+    // If WiFi just connected and MQTT hasn't been started yet, connect
+    if (wifiHelper::isConnected() && !mqttClient::isConnected() && mqttClient::hasConfig())
+    {
+        static unsigned long lastMqttConnectAttempt = 0;
+        unsigned long now = millis();
+        if (now - lastMqttConnectAttempt >= 5000)
+        {
+            lastMqttConnectAttempt = now;
+            debugln("[Loop] WiFi connected, starting MQTT...");
+            mqttClient::connect();
+        }
+    }
+
     unsigned long currentStatusCheckMillis = millis();
     if (currentStatusCheckMillis - previousuStatusCheckMillis >= uStatusCheckInterval)
     {
+        lvgl_port_lock(-1);
         if ((get_var_pdm01_device01_status() > 0) || (get_var_pdm01_device02_status() > 0) || (get_var_pdm01_device03_status() > 0) || (get_var_pdm01_device04_status() > 0) || (get_var_pdm01_device05_status() > 0) || (get_var_pdm01_device08_status() > 0))
         {
             lv_obj_add_state(objects.label_warning_icon_lights, LV_STATE_CHECKED);
@@ -290,7 +329,8 @@ void loop()
             lv_obj_clear_state(objects.label_warning_icon_water, LV_STATE_CHECKED);
             lv_obj_clear_state(objects.label_warning_text_water, LV_STATE_CHECKED);
         }
+        lvgl_port_unlock();
         previousuStatusCheckMillis = currentStatusCheckMillis;
     }
-    sleep(1);
+    delay(5);
 }

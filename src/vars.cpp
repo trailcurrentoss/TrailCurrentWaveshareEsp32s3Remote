@@ -397,7 +397,6 @@ void set_var_current_date_time(const char *value)
     {
         date_time_local[0] = '\0'; // parsing failed
     }
-    lv_label_set_text(objects.label_current_date_time_value, date_time_local);
 }
 
 float current_temperature_value;
@@ -483,55 +482,70 @@ void set_var_keep_screen_on_while_driving(bool value)
 }
 
 
-int32_t gateway_mac_address_byte1;
-int32_t get_var_gateway_mac_address_byte1() {
-    return gateway_mac_address_byte1;
+// --- WiFi / Connection State Variables ---
+
+bool wifi_connected;
+bool get_var_wifi_connected()
+{
+    return wifi_connected;
 }
-void set_var_gateway_mac_address_byte1(int32_t value) {
-    gateway_mac_address_byte1 = value;
+void set_var_wifi_connected(bool value)
+{
+    wifi_connected = value;
 }
 
-int32_t gateway_mac_address_byte2;
-int32_t get_var_gateway_mac_address_byte2() {
-    return gateway_mac_address_byte2;
+bool websocket_connected;
+bool get_var_websocket_connected()
+{
+    return websocket_connected;
 }
-void set_var_gateway_mac_address_byte2(int32_t value) {
-    gateway_mac_address_byte2 = value;
-}
-
-int32_t gateway_mac_address_byte3;
-int32_t get_var_gateway_mac_address_byte3() {
-    return gateway_mac_address_byte3;
-}
-void set_var_gateway_mac_address_byte3(int32_t value) {
-    gateway_mac_address_byte3 = value;
+void set_var_websocket_connected(bool value)
+{
+    websocket_connected = value;
 }
 
-int32_t gateway_mac_address_byte4;
-int32_t get_var_gateway_mac_address_byte4() {
-    return gateway_mac_address_byte4;
+char wifi_ssid[64] = {0};
+const char *get_var_wifi_ssid()
+{
+    return wifi_ssid;
 }
-void set_var_gateway_mac_address_byte4(int32_t value) {
-    gateway_mac_address_byte4 = value;
-}
-
-int32_t gateway_mac_address_byte5;
-int32_t get_var_gateway_mac_address_byte5() {
-    return gateway_mac_address_byte5;
-}
-void set_var_gateway_mac_address_byte5(int32_t value) {
-    gateway_mac_address_byte5 = value;
+void set_var_wifi_ssid(const char *value)
+{
+    strncpy(wifi_ssid, value, sizeof(wifi_ssid) - 1);
+    wifi_ssid[sizeof(wifi_ssid) - 1] = '\0';
 }
 
-int32_t gateway_mac_address_byte6;
-int32_t get_var_gateway_mac_address_byte6() {
-    return gateway_mac_address_byte6;
+char server_url_var[256] = {0};
+const char *get_var_server_url()
+{
+    return server_url_var;
 }
-void set_var_gateway_mac_address_byte6(int32_t value) {
-    gateway_mac_address_byte6 = value;
+void set_var_server_url(const char *value)
+{
+    strncpy(server_url_var, value, sizeof(server_url_var) - 1);
+    server_url_var[sizeof(server_url_var) - 1] = '\0';
 }
 
+bool api_key_configured;
+bool get_var_api_key_configured()
+{
+    return api_key_configured;
+}
+void set_var_api_key_configured(bool value)
+{
+    api_key_configured = value;
+}
 
+char connection_status_text[100] = {0};
+const char *get_var_connection_status_text()
+{
+    return connection_status_text;
+}
+void set_var_connection_status_text(const char *value)
+{
+    strncpy(connection_status_text, value, sizeof(connection_status_text) - 1);
+    connection_status_text[sizeof(connection_status_text) - 1] = '\0';
+}
 
 char current_time_zone_string[100] = { 0 };
 const char *get_var_current_time_zone_string() {

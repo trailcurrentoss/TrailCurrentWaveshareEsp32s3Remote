@@ -15,6 +15,8 @@ typedef struct _objects_t {
     lv_obj_t *air;
     lv_obj_t *settings;
     lv_obj_t *temp;
+    lv_obj_t *wifi_setup;
+    lv_obj_t *server_config;
     lv_obj_t *home_page_bottom_nav_bar;
     lv_obj_t *home_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *home_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -42,7 +44,6 @@ typedef struct _objects_t {
     lv_obj_t *label_warning_text_stabilizers;
     lv_obj_t *label_warning_icon_power;
     lv_obj_t *label_warning_text_power;
-    lv_obj_t *label_current_date_time_value;
     lv_obj_t *trailer_page_bottom_nav_bar;
     lv_obj_t *trailer_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *trailer_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -163,8 +164,11 @@ typedef struct _objects_t {
     lv_obj_t *button_screen_timeout_increase;
     lv_obj_t *check_box_keep_screen_on_while_in_motion;
     lv_obj_t *container_connectivity_options;
-    lv_obj_t *label_gateway_mac_address;
-    lv_obj_t *btn_change_gateway_mac_address;
+    lv_obj_t *label_wifi_status_value;
+    lv_obj_t *btn_change_wifi;
+    lv_obj_t *label_server_url_value;
+    lv_obj_t *label_api_key_status;
+    lv_obj_t *label_websocket_status;
     lv_obj_t *container_demo_settings;
     lv_obj_t *button_settings_demo_light_sequence_start;
     lv_obj_t *button_settings_demo_light_sequence_stop;
@@ -172,17 +176,27 @@ typedef struct _objects_t {
     lv_obj_t *label_about_header;
     lv_obj_t *label_version_number;
     lv_obj_t *mcu_mac_address_value;
-    lv_obj_t *container_mac_addr_entry;
-    lv_obj_t *text_box_mac_address_input_first_byte;
-    lv_obj_t *text_box_mac_address_input_second_byte;
-    lv_obj_t *text_box_mac_address_input_third_byte;
-    lv_obj_t *text_box_mac_address_input_fourth_byte;
-    lv_obj_t *text_box_mac_address_input_fifth_byte;
-    lv_obj_t *text_box_mac_address_input_sixth_byte;
-    lv_obj_t *keyboard_mac_address_entry;
     lv_obj_t *container_date_time_settings;
     lv_obj_t *label_time_zone_header;
     lv_obj_t *drop_down_selected_time_zone;
+    lv_obj_t *label_wifi_setup_title;
+    lv_obj_t *btn_wifi_scan;
+    lv_obj_t *roller_wifi_networks;
+    lv_obj_t *label_wifi_ssid;
+    lv_obj_t *textarea_wifi_ssid;
+    lv_obj_t *label_wifi_password;
+    lv_obj_t *textarea_wifi_password;
+    lv_obj_t *btn_wifi_connect;
+    lv_obj_t *label_wifi_status;
+    lv_obj_t *btn_wifi_skip;
+    lv_obj_t *label_server_config_title;
+    lv_obj_t *label_server_url;
+    lv_obj_t *textarea_server_url;
+    lv_obj_t *label_api_key;
+    lv_obj_t *textarea_api_key;
+    lv_obj_t *btn_save_server_config;
+    lv_obj_t *btn_server_config_back;
+    lv_obj_t *label_server_config_status;
 } objects_t;
 
 extern objects_t objects;
@@ -195,6 +209,8 @@ enum ScreensEnum {
     SCREEN_ID_AIR = 5,
     SCREEN_ID_SETTINGS = 6,
     SCREEN_ID_TEMP = 7,
+    SCREEN_ID_WIFI_SETUP = 8,
+    SCREEN_ID_SERVER_CONFIG = 9,
 };
 
 void create_screen_home();
@@ -217,6 +233,12 @@ void tick_screen_settings();
 
 void create_screen_temp();
 void tick_screen_temp();
+
+void create_screen_wifi_setup();
+void tick_screen_wifi_setup();
+
+void create_screen_server_config();
+void tick_screen_server_config();
 
 void create_user_widget_bottom_nav_bar(lv_obj_t *parent_obj, int startWidgetIndex);
 void tick_user_widget_bottom_nav_bar(int startWidgetIndex);

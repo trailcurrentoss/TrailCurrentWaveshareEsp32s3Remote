@@ -46,7 +46,13 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_SELECTED_THEME = 28,
     FLOW_GLOBAL_VARIABLE_SCREEN_TIMEOUT_VALUE = 29,
     FLOW_GLOBAL_VARIABLE_KEEP_SCREEN_ON_WHILE_DRIVING = 30,
-    FLOW_GLOBAL_VARIABLE_CURRENT_TIME_ZONE_STRING = 31
+    FLOW_GLOBAL_VARIABLE_CURRENT_TIME_ZONE_STRING = 31,
+    FLOW_GLOBAL_VARIABLE_WIFI_CONNECTED = 32,
+    FLOW_GLOBAL_VARIABLE_WEBSOCKET_CONNECTED = 33,
+    FLOW_GLOBAL_VARIABLE_WIFI_SSID = 34,
+    FLOW_GLOBAL_VARIABLE_SERVER_URL = 35,
+    FLOW_GLOBAL_VARIABLE_API_KEY_CONFIGURED = 36,
+    FLOW_GLOBAL_VARIABLE_CONNECTION_STATUS_TEXT = 37
 };
 
 // Native global variables
@@ -113,20 +119,20 @@ extern int32_t get_var_screen_timeout_value();
 extern void set_var_screen_timeout_value(int32_t value);
 extern bool get_var_keep_screen_on_while_driving();
 extern void set_var_keep_screen_on_while_driving(bool value);
-extern int32_t get_var_gateway_mac_address_byte1();
-extern void set_var_gateway_mac_address_byte1(int32_t value);
-extern int32_t get_var_gateway_mac_address_byte2();
-extern void set_var_gateway_mac_address_byte2(int32_t value);
-extern int32_t get_var_gateway_mac_address_byte3();
-extern void set_var_gateway_mac_address_byte3(int32_t value);
-extern int32_t get_var_gateway_mac_address_byte4();
-extern void set_var_gateway_mac_address_byte4(int32_t value);
-extern int32_t get_var_gateway_mac_address_byte5();
-extern void set_var_gateway_mac_address_byte5(int32_t value);
-extern int32_t get_var_gateway_mac_address_byte6();
-extern void set_var_gateway_mac_address_byte6(int32_t value);
 extern const char *get_var_current_time_zone_string();
 extern void set_var_current_time_zone_string(const char *value);
+extern bool get_var_wifi_connected();
+extern void set_var_wifi_connected(bool value);
+extern bool get_var_websocket_connected();
+extern void set_var_websocket_connected(bool value);
+extern const char *get_var_wifi_ssid();
+extern void set_var_wifi_ssid(const char *value);
+extern const char *get_var_server_url();
+extern void set_var_server_url(const char *value);
+extern bool get_var_api_key_configured();
+extern void set_var_api_key_configured(bool value);
+extern const char *get_var_connection_status_text();
+extern void set_var_connection_status_text(const char *value);
 
 
 #ifdef __cplusplus

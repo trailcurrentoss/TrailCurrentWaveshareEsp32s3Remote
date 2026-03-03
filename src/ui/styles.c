@@ -16,7 +16,7 @@ void init_style_arc_default_KNOB_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_arc_default_KNOB_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_arc_default_KNOB_DEFAULT(style);
     }
@@ -31,7 +31,7 @@ void init_style_arc_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_arc_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_arc_default_MAIN_DEFAULT(style);
     }
@@ -46,7 +46,7 @@ void init_style_arc_default_INDICATOR_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_arc_default_INDICATOR_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_arc_default_INDICATOR_DEFAULT(style);
     }
@@ -78,7 +78,7 @@ void init_style_bar_default_INDICATOR_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_bar_default_INDICATOR_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_bar_default_INDICATOR_CHECKED(style);
     }
@@ -92,7 +92,7 @@ void init_style_bar_default_INDICATOR_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_bar_default_INDICATOR_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_bar_default_INDICATOR_DEFAULT(style);
     }
@@ -106,7 +106,7 @@ void init_style_bar_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_bar_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_bar_default_MAIN_DEFAULT(style);
     }
@@ -146,7 +146,7 @@ void init_style_button_circle_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_button_circle_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_circle_MAIN_DEFAULT(style);
     }
@@ -189,7 +189,7 @@ void init_style_button_list_menu_item_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_button_list_menu_item_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_list_menu_item_MAIN_DEFAULT(style);
     }
@@ -204,7 +204,7 @@ void init_style_button_list_menu_item_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_button_list_menu_item_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_list_menu_item_MAIN_CHECKED(style);
     }
@@ -243,7 +243,7 @@ void init_style_button_navbar_active_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_button_navbar_active_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_navbar_active_MAIN_DEFAULT(style);
     }
@@ -257,7 +257,7 @@ void init_style_button_navbar_active_MAIN_PRESSED(lv_style_t *style) {
 lv_style_t *get_style_button_navbar_active_MAIN_PRESSED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_navbar_active_MAIN_PRESSED(style);
     }
@@ -295,7 +295,7 @@ void init_style_button_navbar_in_active_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_button_navbar_in_active_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_navbar_in_active_MAIN_DEFAULT(style);
     }
@@ -313,7 +313,7 @@ void init_style_button_navbar_in_active_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_button_navbar_in_active_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_button_navbar_in_active_MAIN_CHECKED(style);
     }
@@ -347,7 +347,7 @@ void init_style_checkbox_default_INDICATOR_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_checkbox_default_INDICATOR_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_checkbox_default_INDICATOR_CHECKED(style);
     }
@@ -361,7 +361,7 @@ void init_style_checkbox_default_INDICATOR_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_checkbox_default_INDICATOR_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_checkbox_default_INDICATOR_DEFAULT(style);
     }
@@ -375,7 +375,7 @@ void init_style_checkbox_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_checkbox_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_checkbox_default_MAIN_DEFAULT(style);
     }
@@ -418,7 +418,7 @@ void init_style_default_button_matrix_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_default_button_matrix_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_default_button_matrix_MAIN_DEFAULT(style);
     }
@@ -432,7 +432,7 @@ void init_style_default_button_matrix_ITEMS_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_default_button_matrix_ITEMS_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_default_button_matrix_ITEMS_DEFAULT(style);
     }
@@ -446,7 +446,7 @@ void init_style_default_button_matrix_ITEMS_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_default_button_matrix_ITEMS_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_default_button_matrix_ITEMS_CHECKED(style);
     }
@@ -491,7 +491,7 @@ void init_style_keyboard_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_keyboard_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_keyboard_default_MAIN_DEFAULT(style);
     }
@@ -505,7 +505,7 @@ void init_style_keyboard_default_ITEMS_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_keyboard_default_ITEMS_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_keyboard_default_ITEMS_DEFAULT(style);
     }
@@ -535,7 +535,7 @@ void init_style_led_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_led_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_led_default_MAIN_DEFAULT(style);
     }
@@ -549,7 +549,7 @@ void init_style_led_default_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_led_default_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_led_default_MAIN_CHECKED(style);
     }
@@ -579,7 +579,7 @@ void init_style_label_circle_button_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_circle_button_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_circle_button_MAIN_DEFAULT(style);
     }
@@ -608,7 +608,7 @@ void init_style_label_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_default_MAIN_DEFAULT(style);
     }
@@ -623,7 +623,7 @@ void init_style_label_default_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_label_default_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_default_MAIN_CHECKED(style);
     }
@@ -655,7 +655,7 @@ void init_style_label_fa16_icon_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_fa16_icon_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_fa16_icon_MAIN_DEFAULT(style);
     }
@@ -670,7 +670,7 @@ void init_style_label_fa16_icon_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_label_fa16_icon_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_fa16_icon_MAIN_CHECKED(style);
     }
@@ -702,7 +702,7 @@ void init_style_label_fa32_icon_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_fa32_icon_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_fa32_icon_MAIN_DEFAULT(style);
     }
@@ -717,7 +717,7 @@ void init_style_label_fa32_icon_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_label_fa32_icon_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_fa32_icon_MAIN_CHECKED(style);
     }
@@ -750,7 +750,7 @@ void init_style_label_fa_icon_active_MAIN_PRESSED(lv_style_t *style) {
 lv_style_t *get_style_label_fa_icon_active_MAIN_PRESSED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_fa_icon_active_MAIN_PRESSED(style);
     }
@@ -782,7 +782,7 @@ void init_style_label_list_menu_item_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_list_menu_item_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_list_menu_item_MAIN_DEFAULT(style);
     }
@@ -812,7 +812,7 @@ void init_style_label_nav_text_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_nav_text_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_nav_text_MAIN_DEFAULT(style);
     }
@@ -842,7 +842,7 @@ void init_style_label_nav_text_alternate_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_nav_text_alternate_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_nav_text_alternate_MAIN_DEFAULT(style);
     }
@@ -870,7 +870,7 @@ void init_style_label_secondary_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_label_secondary_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_label_secondary_MAIN_DEFAULT(style);
     }
@@ -901,7 +901,7 @@ void init_style_list_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_list_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_list_default_MAIN_DEFAULT(style);
     }
@@ -939,7 +939,7 @@ void init_style_list_menu_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_list_menu_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_list_menu_MAIN_DEFAULT(style);
     }
@@ -972,7 +972,7 @@ void init_style_message_box_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_message_box_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_message_box_default_MAIN_DEFAULT(style);
     }
@@ -1001,7 +1001,7 @@ void init_style_nav_bar_icon_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_nav_bar_icon_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_nav_bar_icon_MAIN_DEFAULT(style);
     }
@@ -1049,7 +1049,7 @@ void init_style_panel_nav_bar_top_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_panel_nav_bar_top_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_panel_nav_bar_top_MAIN_DEFAULT(style);
     }
@@ -1092,7 +1092,7 @@ void init_style_panel_screen_content_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_panel_screen_content_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_panel_screen_content_MAIN_DEFAULT(style);
     }
@@ -1121,7 +1121,7 @@ void init_style_roller_default_SELECTED_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_roller_default_SELECTED_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_roller_default_SELECTED_DEFAULT(style);
     }
@@ -1136,7 +1136,7 @@ void init_style_roller_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_roller_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_roller_default_MAIN_DEFAULT(style);
     }
@@ -1167,7 +1167,7 @@ void init_style_spinner_default_INDICATOR_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_spinner_default_INDICATOR_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_spinner_default_INDICATOR_DEFAULT(style);
     }
@@ -1181,7 +1181,7 @@ void init_style_spinner_default_INDICATOR_FOCUSED(lv_style_t *style) {
 lv_style_t *get_style_spinner_default_INDICATOR_FOCUSED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_spinner_default_INDICATOR_FOCUSED(style);
     }
@@ -1195,7 +1195,7 @@ void init_style_spinner_default_INDICATOR_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_spinner_default_INDICATOR_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_spinner_default_INDICATOR_CHECKED(style);
     }
@@ -1210,7 +1210,7 @@ void init_style_spinner_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_spinner_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_spinner_default_MAIN_DEFAULT(style);
     }
@@ -1248,7 +1248,7 @@ void init_style_style_button_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_button_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_button_default_MAIN_DEFAULT(style);
     }
@@ -1265,7 +1265,7 @@ void init_style_style_button_default_MAIN_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_style_button_default_MAIN_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_button_default_MAIN_CHECKED(style);
     }
@@ -1314,7 +1314,7 @@ void init_style_style_content_panel_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_content_panel_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_content_panel_MAIN_DEFAULT(style);
     }
@@ -1342,7 +1342,7 @@ void init_style_style_default_slider_INDICATOR_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_default_slider_INDICATOR_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_default_slider_INDICATOR_DEFAULT(style);
     }
@@ -1356,7 +1356,7 @@ void init_style_style_default_slider_KNOB_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_default_slider_KNOB_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_default_slider_KNOB_DEFAULT(style);
     }
@@ -1370,7 +1370,7 @@ void init_style_style_default_slider_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_default_slider_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_default_slider_MAIN_DEFAULT(style);
     }
@@ -1409,7 +1409,7 @@ void init_style_style_device_status_ind_off_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_device_status_ind_off_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_device_status_ind_off_MAIN_DEFAULT(style);
     }
@@ -1444,7 +1444,7 @@ void init_style_style_device_status_ind_on_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_device_status_ind_on_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_device_status_ind_on_MAIN_DEFAULT(style);
     }
@@ -1458,7 +1458,7 @@ void init_style_style_device_status_ind_on_MAIN_PRESSED(lv_style_t *style) {
 lv_style_t *get_style_style_device_status_ind_on_MAIN_PRESSED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_device_status_ind_on_MAIN_PRESSED(style);
     }
@@ -1490,7 +1490,7 @@ void init_style_style_panel_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_panel_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_panel_default_MAIN_DEFAULT(style);
     }
@@ -1504,7 +1504,7 @@ void init_style_style_panel_default_MAIN_PRESSED(lv_style_t *style) {
 lv_style_t *get_style_style_panel_default_MAIN_PRESSED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_panel_default_MAIN_PRESSED(style);
     }
@@ -1536,7 +1536,7 @@ void init_style_style_panel_dialog_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_panel_dialog_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_panel_dialog_MAIN_DEFAULT(style);
     }
@@ -1567,7 +1567,7 @@ void init_style_style_panel_modal_blocker_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_panel_modal_blocker_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_panel_modal_blocker_MAIN_DEFAULT(style);
     }
@@ -1606,7 +1606,7 @@ void init_style_style_panel_nav_bar_bottom_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_panel_nav_bar_bottom_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_panel_nav_bar_bottom_MAIN_DEFAULT(style);
     }
@@ -1640,7 +1640,7 @@ void init_style_style_screen_default_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_screen_default_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_screen_default_MAIN_DEFAULT(style);
     }
@@ -1673,7 +1673,7 @@ void init_style_style_top_nav_text_normal_MAIN_DEFAULT(lv_style_t *style) {
 lv_style_t *get_style_style_top_nav_text_normal_MAIN_DEFAULT() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_style_top_nav_text_normal_MAIN_DEFAULT(style);
     }
@@ -1701,7 +1701,7 @@ void init_style_switch_default_INDICATOR_CHECKED(lv_style_t *style) {
 lv_style_t *get_style_switch_default_INDICATOR_CHECKED() {
     static lv_style_t *style;
     if (!style) {
-        style = lv_mem_alloc(sizeof(lv_style_t));
+        style = (lv_style_t *)lv_mem_alloc(sizeof(lv_style_t));
         lv_style_init(style);
         init_style_switch_default_INDICATOR_CHECKED(style);
     }
