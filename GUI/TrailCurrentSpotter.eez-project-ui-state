@@ -1,12 +1,12 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/0",
-    "selectedUserWidgetObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0",
-    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/30",
-    "selectedStyleObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles/9",
-    "selectedThemeObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/themes/0",
-    "selectedThemeColorObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/colors/11",
-    "selectedFontObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/fonts/1",
+    "selectedUserPageObject": "[TrailCurrentSpotter.eez-project]:/userPages/0",
+    "selectedUserWidgetObject": "[TrailCurrentSpotter.eez-project]:/userWidgets/0",
+    "selectedGlobalVariableObject": "[TrailCurrentSpotter.eez-project]:/variables/globalVariables/30",
+    "selectedStyleObject": "[TrailCurrentSpotter.eez-project]:/lvglStyles/styles/9",
+    "selectedThemeObject": "[TrailCurrentSpotter.eez-project]:/themes/0",
+    "selectedThemeColorObject": "[TrailCurrentSpotter.eez-project]:/colors/11",
+    "selectedFontObject": "[TrailCurrentSpotter.eez-project]:/fonts/1",
     "subnavigationSelectedItems": {
       "variables-tab/sub-navigation/selected-item": "Global"
     }
@@ -206,7 +206,7 @@
                   "name": "Home",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/0",
+                    "objectPath": "[TrailCurrentSpotter.eez-project]:/userPages/0",
                     "permanent": false
                   },
                   "icon": "svg:page"
@@ -217,7 +217,7 @@
                   "name": "fa32",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/fonts/1",
+                    "objectPath": "[TrailCurrentSpotter.eez-project]:/fonts/1",
                     "permanent": true
                   },
                   "icon": "material:font_download"
@@ -228,7 +228,7 @@
                   "name": "BottomNavBar",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0",
+                    "objectPath": "[TrailCurrentSpotter.eez-project]:/userWidgets/0",
                     "permanent": false
                   },
                   "icon": "svg:user_widget"
@@ -239,7 +239,7 @@
                   "name": "WifiSetup",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/7",
+                    "objectPath": "[TrailCurrentSpotter.eez-project]:/userPages/7",
                     "permanent": true
                   },
                   "icon": "svg:page"
@@ -250,7 +250,7 @@
                   "name": "Settings",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/5",
+                    "objectPath": "[TrailCurrentSpotter.eez-project]:/userPages/5",
                     "permanent": true
                   },
                   "icon": "svg:page"
@@ -1024,11 +1024,13 @@
   "selectedBuildConfiguration": "Default",
   "features": {},
   "objects": {
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/0[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/0[flow-state]": {
       "selection": {
         "0": {
           "0": {},
-          "1": {},
+          "1": {
+            "$selected": true
+          },
           "2": {},
           "3": {},
           "4": {},
@@ -1056,7 +1058,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles[tree-state]": {
+    "[TrailCurrentSpotter.eez-project]:/lvglStyles/styles[tree-state]": {
       "0": {},
       "1": {},
       "3": {},
@@ -1080,7 +1082,7 @@
       "42": {},
       "43": {}
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/1[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/1[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1104,7 +1106,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/2[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/2[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1135,7 +1137,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/3[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/3[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1164,7 +1166,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/4[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/4[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1193,7 +1195,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/5[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/5[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1217,7 +1219,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userWidgets/0[flow-state]": {
       "selection": {
         "0": {
           "0": {},
@@ -1244,7 +1246,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/6[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/6[flow-state]": {
       "selection": {
         "0": {
           "0": {
@@ -1266,7 +1268,7 @@
         "scrollLeft": 0
       }
     },
-    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/7[flow-state]": {
+    "[TrailCurrentSpotter.eez-project]:/userPages/7[flow-state]": {
       "selection": {},
       "transform": {
         "translate": {

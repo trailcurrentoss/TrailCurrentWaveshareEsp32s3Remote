@@ -1,4 +1,4 @@
-# TrailCurrent Waveshare ESP32-S3 Remote
+# TrailCurrent Spotter
 
 Touchscreen remote monitor for the [TrailCurrent](https://trailcurrent.com) modular vehicle system, built on the Waveshare ESP32-S3 4.3" touch display with LVGL GUI. Connects directly to the local MQTT broker over WiFi for real-time data and control.
 
@@ -113,9 +113,9 @@ A 3D-printable enclosure is included in the `CAD/` directory (FreeCAD format). T
 ├── ASSETS/                       # Images and documentation assets
 │   └── CaseDesign.png
 ├── CAD/                          # 3D-printable enclosure (FreeCAD)
-│   └── TrailCurrentWaveshareEsp32s3Remote.FCStd
+│   └── TrailCurrentSpotter.FCStd
 ├── GUI/                          # EEZ Studio GUI project
-│   └── TrailCurrentWaveshareEsp32s3Remote.eez-project
+│   └── TrailCurrentSpotter.eez-project
 ├── src/                          # Firmware source
 │   ├── main.cpp                  # Application entry, LVGL setup, IO expander init, boot flow
 │   ├── globals.h                 # Version, debug macros

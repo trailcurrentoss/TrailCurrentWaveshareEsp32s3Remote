@@ -1238,6 +1238,7 @@
               "scrollSnapY": "",
               "checkedState": false,
               "checkedStateType": "literal",
+              "disabledState": false,
               "disabledStateType": "literal",
               "states": "",
               "useStyle": "PanelNavBar",
